@@ -25,3 +25,20 @@ jobs:
 
 Use this image as the base for other Docker images.
 Checkout the [codacy/ci-aws](https://github.com/codacy/ci-aws) as example.
+
+# Build and Publish
+
+The pipeline in `circleci` can deploy this for you when the code is pushed to the remote.
+
+You can also run everything locally using the makefile
+```
+$ make help
+---------------------------------------------------------------------------------------------------------
+build and deploy help
+---------------------------------------------------------------------------------------------------------
+build                          build docker image
+get-next-version-number        get next version number
+git-tag                        tag the current commit with the next version and push
+push-docker-image              push the docker image to the registry (DOCKER_USER and DOCKER_PASS mandatory)
+push-latest-docker-image       push the docker image with the "latest" tag to the registry (DOCKER_USER and DOCKER_PASS mandatory)
+```
