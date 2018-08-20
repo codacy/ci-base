@@ -12,6 +12,7 @@ RUN apk add --no-cache \
 	openssh \
 	tar \
 	wget \
-    make
+    make && \
+    rm -rf /var/cache/apk/*
 
 WORKDIR /root/workdir
