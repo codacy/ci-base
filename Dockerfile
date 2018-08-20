@@ -11,6 +11,7 @@ RUN apk add --no-cache \
 	jq \
 	openssh \
 	tar \
-	wget
+	wget \
+    make
 
 WORKDIR /root/workdir
