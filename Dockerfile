@@ -7,6 +7,7 @@ RUN apk add --no-cache \
 	ca-certificates \
 	curl \
 	git \
+	zip \
 	gzip \
 	jq \
 	openssh \
