@@ -94,7 +94,31 @@ workflows:
   version: 2
   publish:
     jobs:
-      - checkout
+      - checkout:
+          filters:
+            branches:
+              ignore: master
+      - build:
+          requires:
+            - checkout
+      - publish_approval:
+          type: approval
+          requires:
+            - build
+      - publish_versioned:
+          requires:
+            - publish_approval
+          context: CodacyDocker
+      - tag_version:
+          requires:
+            - publish_versioned
+
+  publish_master:
+    jobs:
+      - checkout:
+          filters:
+            branches:
+              only: master
       - build:
           requires:
             - checkout
@@ -105,9 +129,6 @@ workflows:
       - publish_latest:
           requires:
             - publish_versioned
-          filters:
-            branches:
-              only: master
           context: CodacyDocker
       - tag_version:
           requires:
