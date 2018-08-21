@@ -25,6 +25,7 @@ push-docker-image: ## push the docker image to the registry (DOCKER_USER and DOC
 
 push-latest-docker-image: ## push the docker image with the "latest" tag to the registry (DOCKER_USER and DOCKER_PASS mandatory)
 	docker login -u $(DOCKER_USER) -p $(DOCKER_PASS) &&\
+	docker tag codacy/$(PROJECT_NAME):$(VERSION_NUMBER) codacy/$(PROJECT_NAME):latest &&\
 	docker push codacy/$(PROJECT_NAME):latest
 
 git-tag: ## tag the current commit with the next version and push
